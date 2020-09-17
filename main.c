@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+#include "personaje.h"
 void capturar_enteros()
 {
     int enteros[5];
@@ -31,18 +31,19 @@ void mostrar(int n,char cadena[]){
 
 int main()
 {
-    int opc;
+    char opc;
     int n;
     char cadena[20];
     do{
-        printf("Selecciona una opcion\n(1)Capturar enteros\n(2)Mostrar cadena n veces\n(3)Agregara personaje\n(0)Salir\n");
-        scanf("%i",&opc);
+        printf("\nSelecciona una opcion\n(1)Capturar enteros\n(2)Mostrar cadena n veces\n(3)Agregar personaje\n(4)Mostrar personajes\n(0)Salir\n");
+        fflush(stdin);
+        scanf("%c",&opc);
         switch (opc)
         {
-        case 1:
+        case '1':
             capturar_enteros();
             break;
-        case 2:
+        case '2':
             printf("Escribe una cadena de hasta 20 caracteres: ");
             fflush(stdin);
             fgets(cadena,sizeof(cadena),stdin);
@@ -50,10 +51,13 @@ int main()
             scanf("%i",&n);
             mostrar(n,cadena);
             break;
-        case 3:
+        case '3':
+            capturar_personajes();
+            break;
+        case '4':
+            mostrar_personajes();
             break;
         }
     }
-    while(opc!=0);
-    return 0;
+    while(opc!='0');
 }
