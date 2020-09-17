@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<stdlib.h>
 
 void capturar_enteros()
 {
@@ -22,11 +21,21 @@ void capturar_enteros()
     printf("Promedio:%.2f",suma/5.0);
 }
 
+void mostrar(int n,char cadena[]){
+    for (size_t i = 0; i < n; i++)
+    {
+        printf("%s",cadena);
+    }
+    
+}
+
 int main()
 {
-    int opc, salir;
+    int opc;
+    int n;
+    char cadena[20];
     do{
-        printf("Selecciona una opcion\n(1)Suma y promedio de 5 numeros\n(2)Funcion mostrar\n(3)Personajes\n(4)Salir\n");
+        printf("Selecciona una opcion\n(1)Capturar enteros\n(2)Mostrar cadena n veces\n(3)Agregara personaje\n(0)Salir\n");
         scanf("%i",&opc);
         switch (opc)
         {
@@ -34,14 +43,17 @@ int main()
             capturar_enteros();
             break;
         case 2:
+            printf("Escribe una cadena de hasta 20 caracteres: ");
+            fflush(stdin);
+            fgets(cadena,sizeof(cadena),stdin);
+            printf("n: ");
+            scanf("%i",&n);
+            mostrar(n,cadena);
             break;
         case 3:
             break;
-        case 4:
-            salir=0;
-            break;
         }
     }
-    while(salir!=0);
+    while(opc!=0);
     return 0;
 }
